@@ -149,3 +149,55 @@ let f = {
 };
 
 getFullName(f); // A perfect usecase for this will be in registration forms
+
+// Classes and Access Modifiers
+
+class Employee {
+  employeeName: string;
+
+  constructor(name: string) {
+    this.employeeName = name;
+  }
+
+  greet() {
+    console.log(`Good Morning &{this.employeeName}`);
+  }
+}
+
+let emp1 = new Employee('Victor');
+console.log(emp1.employeeName);
+emp1.greet();
+
+//Class based inheritance
+
+class Manager extends Employee {
+  constructor(managerName: string) {
+    super(managerName);
+  }
+
+  delegateWork() {
+    console.log(`Manager delegating tasks`);
+  }
+}
+
+let m1 = new Manager('Bruce');
+m1.delegateWork();
+m1.greet();
+console.log(m1.employeeName);
+
+//Access modifiers
+
+// 1. Public,  in line 155 i can add public to employeee and this will allow me use it outside if that function
+
+// class Employee {
+//    public employeeName: string;
+
+// 2. private, those the opposite, using private will throw an error in my classed based inheritance function, since we are calling employeeName outside its constructor
+
+// class Employee {
+//     private employeeName: string;
+
+// 3. protected for accessiblilty within a class and the classes derived from it. so in the above example uing protected will not throw an error inside the manager constructor but will throw an error if its called outside it
+
+// class Employee {
+//    protected employeeName: string;
